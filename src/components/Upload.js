@@ -12,7 +12,7 @@ class Upload extends Component {
 
     const data = new FormData();
     // data.append()
-    data.append("user_id", 1)
+    data.append("user_id", 2)
     // data.append("name", this.state.name);
     data.append("image", this.state.image);
 
