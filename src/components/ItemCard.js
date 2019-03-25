@@ -14,10 +14,10 @@ class ItemCard extends React.Component {
   }
 
   render(){
-    // console.log("item card", this.props.id);
-    console.log("state in item card", this.state.src);
+    // // console.log("item card", this.props.id);
+    // console.log("state in item card", this.state.src);
     return(
-      <img src={this.state.src} alt="fun pic" />
+      <img src={this.state.src} alt="fun pic" height="300px" width="300px" />
     )
   }
 
