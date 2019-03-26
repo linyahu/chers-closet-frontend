@@ -1,6 +1,7 @@
 import React from 'react'
 import OutfitCard from './OutfitCard'
 import NewOutfit from "./NewOutfit"
+import EditOutfit from "./EditOutfit"
 
 class OutfitContainer extends React.Component {
   // 1. get all outfits that belong to the user....
@@ -9,6 +10,9 @@ class OutfitContainer extends React.Component {
   state = {
     outfits: [], // has all the outfits that belong to the user (user 1)
     displayNewOutfitForm: false,
+    displayEditOutfitForm: false,
+    editCurrentOutfit: {},
+    editOutfitItems: []
   }
 
   displayNewOutfitForm = () => {
@@ -25,26 +29,62 @@ class OutfitContainer extends React.Component {
     })
   }
 
+  handleEditOutfit = (outfit, items) => {
+    console.log("editing outfit")
+    let toggleEditOutfit = !this.state.displayEditOutfitForm
+    this.setState({
+      displayEditOutfitForm: toggleEditOutfit,
+      displayNewOutfitForm: false,
+      editCurrentOutfit: outfit,
+      editOutfitItems: items
+    })
+  }
+
+  renderBottomComponent = () => {
+    if (this.state.displayNewOutfitForm === true) {
+      return  (
+        <div>
+        <NewOutfit
+          onDragOver={this.props.onDragOver}
+          onDrop={this.props.onDrop}
+          currentItems={this.props.buildingOutfit}
+          user={this.props.user}
+        />
+        </div>
+      )
+    } else if (this.state.displayEditOutfitForm === true ) {
+      return (
+        <div>
+        <EditOutfit
+          onDragOver={this.props.onDragOver}
+          onDrop={this.props.onDrop}
+          currentItems={this.state.editOutfitItems}
+          user={this.props.user}
+          outfit={this.state.editCurrentOutfit}
+          buildingOutfit={this.props.buildingOutfit}
+
+        />
+        </div>
+      )
+    } else {
+      return (
+      <div>
+        <button onClick={this.displayNewOutfitForm}> Create New Outfit </button>
+        {this.state.outfits.map(outfit => {
+          return <OutfitCard key={outfit.id} id={outfit.id} outfit={outfit} handleEditOutfit={this.handleEditOutfit}/>
+        })}
+      </div>
+      )
+    }
+  }
+
 
   render(){
+    console.log("current ouftis", this.state.outfits)
     return (
       <div>
         <h1> OUTFITS </h1>
-        <button onClick={this.displayNewOutfitForm}> Create New Outfit </button>
-
-        {
-          this.state.displayNewOutfitForm ?
-          <NewOutfit
-            onDragOver={this.props.onDragOver}
-            onDrop={this.props.onDrop}
-            currentItems={this.props.buildingOutfit}
-            user={this.props.user}
-          />
-          :
-          this.state.outfits.map( outfit => {
-            return <OutfitCard key={outfit.id} id={outfit.id} outfit={outfit}/>
-          })
-        }
+        {this.renderBottomComponent()}
       </div>
     )
   }

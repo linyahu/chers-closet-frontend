@@ -41,9 +41,11 @@ class App extends Component {
 
   onDrop = () => {
     console.log("gonna drop");
-    this.setState( prevState => {
-      return { buildingOutfit: [...prevState.buildingOutfit, this.state.draggedItem] }
-    })
+    if (!this.state.buildingOutfit.includes(this.state.draggedItem)) {
+      this.setState( prevState => {
+        return { buildingOutfit: [...prevState.buildingOutfit, this.state.draggedItem] }
+      })
+    }
   }
 
   /*********************************

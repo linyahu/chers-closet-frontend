@@ -17,11 +17,19 @@ class OutfitCard extends React.Component{
     })
   }
 
+  // handleEditOutfit = () => {
+  //   fetch('http://localhost:3000/outfits/${}')
+  //   console.log("what is this?", this)
+  // }
+
   render(){
     console.log("outfitcard items", this.state.items);
     return(
       <div className="outfitcard">
         <p> this is outfit {this.props.id} </p>
+        <button onClick={() => this.props.handleEditOutfit(this.props.outfit, this.state.items)} >
+        Edit Outfit
+        </button>
         {
           this.state.items.map( item => {
             return <ItemCard key={item.id} id={item.id} item={item} />
