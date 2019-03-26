@@ -26,7 +26,14 @@ class ClosetContainer extends React.Component {
         <h3> MY CLOSET </h3>
         {
           this.props.items.map( item => {
-            return <ItemCard key={item.id} id={item.id} item={item} />
+            return (
+              <ItemCard
+                key={item.id}
+                id={item.id}
+                item={item}
+                onDragStart={this.props.onDragStart}
+              />
+            )
           })
         }
       </div>

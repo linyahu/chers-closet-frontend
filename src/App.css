@@ -31,3 +31,24 @@
     transform: rotate(360deg);
   }
 }
+
+.outfitcard {
+  border-color: black;
+  border-style: solid;
+  margin: 10px;
+  padding: 10px;
+}
+
+.new-outfit {
+  border-color: blue;
+  border-style: solid;
+  margin: 10px;
+  padding: 10px;
+}
+
+.drag-and-drop {
+  border-color: pink;
+  border-style: dotted;
+  margin: 10px;
+  padding: 10px;
+}

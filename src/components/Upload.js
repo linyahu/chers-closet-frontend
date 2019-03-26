@@ -2,14 +2,12 @@ import React, { Component } from "react";
 
 class Upload extends Component {
   state = {
-    name: "",
     description: "",
     category: "",
     subcategory: "",
     color: "",
     season: "",
-    occasion: "",
-    keywords: "",
+    // keywords: "",
     brand: "",
     image: null,
     imageURL: null,
@@ -20,13 +18,12 @@ class Upload extends Component {
 
     const data = new FormData();
 
-    data.append("user_id", 1)
+    data.append("user_id", this.props.user)
     data.append("description", this.state.description)
     data.append("category", this.state.category)
     data.append("subcategory", this.state.subcategory);
     data.append("color", this.state.color)
     data.append("season", this.state.season)
-    data.append("occasion", this.state.occasion);
     data.append("keywords", this.state.keywords);
     data.append("brand", this.state.brand);
     data.append("image", this.state.image);
@@ -61,64 +58,65 @@ class Upload extends Component {
     return (
       <div className="Upload">
 
-      <label> Description: </label>
-      <input name="description" type="text" value={this.state.description} onChange={this.handleChange} />
-
-      <label> Category: </label>
-      <select onChange={this.handleChange} name="category" value={this.state.category}>
-      <option value="">Select</option>
-      <option value="tops">Tops</option>
-      <option value="bottoms">Bottoms</option>
-      <option value="outerwear">Outerwear</option>
-      <option value="dresses">Dresses</option>
-      <option value="shoes">Shoes</option>
-      <option value="accessories">Accessories</option>
-      <option value="handbag">Handbag</option>
-      </select>
-
-      <label> Sub-Category: </label>
-      <input name="subcategory" type="text" value={this.state.subcategory} onChange={this.handleChange} />
-
-
-      <label> Color: </label>
-      <select onChange={this.handleChange} name="color" value={this.state.color}>
-      <option value="">Select</option>
-      <option value="black">Black</option>
-      <option value="white">White</option>
-      <option value="gray">Gray</option>
-      <option value="brown">Brown</option>
-      <option value="tan">Tan</option>
-      <option value="red">Red</option>
-      <option value="orange">Orange</option>
-      <option value="yellow">Yellow</option>
-      <option value="green">Green</option>
-      <option value="blue">Blue</option>
-      <option value="purple">Purple</option>
-      <option value="pink">Pink</option>
-      </select>
-
-      <label> Season: </label>
-      <select onChange={this.handleChange} name="season" value={this.state.season} >
-      <option value="">Select</option>
-      <option value="winter">Winter</option>
-      <option value="spring">Spring</option>
-      <option value="summer">Summer</option>
-      <option value="fall">Fall</option>
-      </select>
-
-      <label> Occasion: </label>
-      <input name="occasion" type="text" value={this.state.occasion} onChange={this.handleChange} />
-
-      <label> Brand: </label>
-      <input name="brand" type="text" value={this.state.brand} onChange={this.handleChange} />
-
-      <label> Keywords: </label>
-      <input name="keywords" type="text" value={this.state.keywords} onChange={this.handleChange} />
-
-
         <form onSubmit={this.handleSubmit}>
+          <label> Description: </label>
+          <input name="description" type="text" value={this.state.description} onChange={this.handleChange} />
+          <br />
 
+          <label> Category: </label>
+          <select onChange={this.handleChange} name="category" value={this.state.category}>
+            <option value="">Select</option>
+            <option value="tops">Tops</option>
+            <option value="bottoms">Bottoms</option>
+            <option value="outerwear">Outerwear</option>
+            <option value="dresses">Dresses</option>
+            <option value="shoes">Shoes</option>
+            <option value="accessories">Accessories</option>
+            <option value="handbag">Handbag</option>
+          </select>
 
+          <br />
+          <label> Sub-Category: </label>
+          <input name="subcategory" type="text" value={this.state.subcategory} onChange={this.handleChange} />
+          <br />
+
+          <label> Color: </label>
+          <select onChange={this.handleChange} name="color" value={this.state.color}>
+          <option value="">Select</option>
+          <option value="black">Black</option>
+          <option value="white">White</option>
+          <option value="gray">Gray</option>
+          <option value="brown">Brown</option>
+          <option value="tan">Tan</option>
+          <option value="red">Red</option>
+          <option value="orange">Orange</option>
+          <option value="yellow">Yellow</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="purple">Purple</option>
+          <option value="pink">Pink</option>
+          </select>
+
+          <br />
+
+          <label> Season: </label>
+          <select onChange={this.handleChange} name="season" value={this.state.season} >
+          <option value="">Select</option>
+          <option value="winter">Winter</option>
+          <option value="spring">Spring</option>
+          <option value="summer">Summer</option>
+          <option value="fall">Fall</option>
+          </select>
+
+          <br />
+
+          <label> Brand: </label>
+          <input name="brand" type="text" value={this.state.brand} onChange={this.handleChange} />
+
+          <br />
+          <label> Keywords: </label>
+          <input name="keywords" type="text" value={this.state.keywords} onChange={this.handleChange} />
+          <br />
 
           <input type="file" onChange={this.handleFileUpload} />
           <input type="submit" value="Upload" />
@@ -127,6 +125,7 @@ class Upload extends Component {
         {!!this.state.imageURL ? (
           <img src={this.state.imageURL} alt="img" />
         ) : null}
+
       </div>
     );
   }
