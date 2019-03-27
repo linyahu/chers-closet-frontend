@@ -28,7 +28,7 @@ class EditOutfit extends Component {
       user_id: this.props.user
     }
 
-    fetch("http://localhost:3000/outfits", {
+    fetch(`http://localhost:3000/outfits/${this.props.outfit.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ class EditOutfit extends Component {
 
   addItems = (id) => {
     // this creates each outfit-item
-    this.props.currentItems.map( item => {
+    this.props.buildingOutfit.map( item => {
       let data = {
         outfit_id: id,
         item_id: item.id
