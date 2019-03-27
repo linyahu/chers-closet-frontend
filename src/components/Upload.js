@@ -4,9 +4,9 @@ class Upload extends Component {
   state = {
     description: "",
     category: "",
-    subcategory: "",
+    // subcategory: "",
     color: "",
-    season: "",
+    // season: "",
     // keywords: "",
     brand: "",
     image: null,
@@ -21,10 +21,10 @@ class Upload extends Component {
     data.append("user_id", this.props.user)
     data.append("description", this.state.description)
     data.append("category", this.state.category)
-    data.append("subcategory", this.state.subcategory);
+    // data.append("subcategory", this.state.subcategory);
     data.append("color", this.state.color)
-    data.append("season", this.state.season)
-    data.append("keywords", this.state.keywords);
+    // data.append("season", this.state.season)
+    // data.append("keywords", this.state.keywords);
     data.append("brand", this.state.brand);
     data.append("image", this.state.image);
 
@@ -47,14 +47,14 @@ class Upload extends Component {
   };
 
   handleFileUpload = event => {
-    console.log(event.nativeEvent, event.target.files, event.target.files[0]);
+    // console.log(event.nativeEvent, event.target.files, event.target.files[0]);
     this.setState({
       image: event.target.files[0],
     });
   };
 
   render() {
-    console.log(this.state)
+
     return (
       <div className="Upload">
 
@@ -76,9 +76,6 @@ class Upload extends Component {
           </select>
 
           <br />
-          <label> Sub-Category: </label>
-          <input name="subcategory" type="text" value={this.state.subcategory} onChange={this.handleChange} />
-          <br />
 
           <label> Color: </label>
           <select onChange={this.handleChange} name="color" value={this.state.color}>
@@ -95,27 +92,15 @@ class Upload extends Component {
           <option value="blue">Blue</option>
           <option value="purple">Purple</option>
           <option value="pink">Pink</option>
+          <option value="multi">Multi</option>
           </select>
 
           <br />
 
-          <label> Season: </label>
-          <select onChange={this.handleChange} name="season" value={this.state.season} >
-          <option value="">Select</option>
-          <option value="winter">Winter</option>
-          <option value="spring">Spring</option>
-          <option value="summer">Summer</option>
-          <option value="fall">Fall</option>
-          </select>
-
-          <br />
 
           <label> Brand: </label>
           <input name="brand" type="text" value={this.state.brand} onChange={this.handleChange} />
 
-          <br />
-          <label> Keywords: </label>
-          <input name="keywords" type="text" value={this.state.keywords} onChange={this.handleChange} />
           <br />
 
           <input type="file" onChange={this.handleFileUpload} />
@@ -132,3 +117,22 @@ class Upload extends Component {
 }
 
 export default Upload;
+
+// OLD FORM INPUTS
+// <br />
+// <label> Sub-Category: </label>
+// <input name="subcategory" type="text" value={this.state.subcategory} onChange={this.handleChange} />
+// <br />
+
+// <label> Season: </label>
+// <select onChange={this.handleChange} name="season" value={this.state.season} >
+// <option value="">Select</option>
+// <option value="winter">Winter</option>
+// <option value="spring">Spring</option>
+// <option value="summer">Summer</option>
+// <option value="fall">Fall</option>
+// </select>
+
+// <label> Keywords: </label>
+// <input name="keywords" type="text" value={this.state.keywords} onChange={this.handleChange} />
+// <br />

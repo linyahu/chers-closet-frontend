@@ -19,7 +19,7 @@ class App extends Component {
     displayUploadForm: false,
     draggedItem: {},
     buildingOutfit: [], // will just contain items that are dropped into the div
-    currentOutfitItems: [], // just the ids
+    currentOutfitItems: [], // just the ids --> to make sure you can't add the same item twice
   }
 
   /*********************************

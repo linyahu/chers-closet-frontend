@@ -24,10 +24,13 @@ class ItemCard extends React.Component {
           height="150px"
           width="130px"
           onDragStart={ () => this.props.onDragStart(this.props.item) }
-          />
+
+        />
     )
   }
 
 }
 
 export default ItemCard
+
+// onMouseOver={ () => this.props.handleMouseOver() }

@@ -51,7 +51,7 @@ class EditOutfit extends Component {
         outfit_id: id,
         item_id: item.id
       }
-      console.log(data);
+      // console.log(data);
       fetch("http://localhost:3000/outfit_items", {
         method: "POST",
         headers: {
@@ -69,16 +69,28 @@ class EditOutfit extends Component {
   }
 
 renderCurrentItems = () => {
-  // console.log("current items here", this.props.currentItems)
   return this.props.currentItems.map( item => {
-    return <ItemCard key={item.id} id={item.item_id} item={item} />
+    return (
+      <ItemCard
+        key={item.id}
+        id={item.item_id}
+        item={item}
+        onDragStart={this.props.onDragStart}
+      />
+    )
   })
 }
 
 renderNewItems = () => {
-
   return this.props.buildingOutfit.map( item => {
-    return <ItemCard key={item.id} id={item.id} item={item} />
+    return (
+      <ItemCard
+        key={item.id}
+        id={item.id}
+        item={item}
+        onDragStart={this.props.onDragStart}
+      />
+    )
   })
 }
 
@@ -94,9 +106,9 @@ renderNewItems = () => {
       <div className="new-outfit">
         <h1> This will be a edit outfit form </h1>
         <div
+          className="drag-and-drop"
           onDragOver={this.props.onDragOver}
           onDrop={this.props.onDrop}
-          className="drag-and-drop"
         >
           {
             this.props.currentItems == ""

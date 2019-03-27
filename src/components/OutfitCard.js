@@ -17,6 +17,8 @@ class OutfitCard extends React.Component{
   }
 
 
+
+
   render(){
 
     console.log(`items in outfit #${this.props.id}:`, this.state.items);
@@ -28,9 +30,18 @@ class OutfitCard extends React.Component{
           Edit Outfit
         </button>
         <p> Description: {this.props.outfit.description}</p>
+
         {
           this.state.items.map( item => {
-            return <ItemCard key={item.id} id={item.item_id} item={item} />
+            return (
+              <ItemCard
+                key={item.item_id}
+                id={item.item_id}
+                item={item}
+                onDragStart={this.props.onDragStart}
+                handleMouseOver={this.props.handleMouseOver}
+              />
+            )
           })
         }
 

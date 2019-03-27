@@ -41,6 +41,14 @@ class OutfitContainer extends React.Component {
     })
   }
 
+  cannotDragItem() {
+    console.log("can't drag this!");
+  }
+
+  noMouseOver() {
+    console.log("no mouse over");
+  }
+
   /*********************************
               RENDERS
   *********************************/
@@ -54,6 +62,8 @@ class OutfitContainer extends React.Component {
             onDrop={this.props.onDrop}
             currentItems={this.props.buildingOutfit}
             user={this.props.user}
+            onDragStart={this.cannotDragItem}
+
           />
         </div>
       )
@@ -67,6 +77,7 @@ class OutfitContainer extends React.Component {
             user={this.props.user}
             outfit={this.state.editCurrentOutfit}
             buildingOutfit={this.props.buildingOutfit}
+            onDragStart={this.cannotDragItem}
           />
         </div>
       )
@@ -75,7 +86,16 @@ class OutfitContainer extends React.Component {
       <div>
         <button onClick={this.displayNewOutfitForm}> Create New Outfit </button>
         {this.state.outfits.map(outfit => {
-          return <OutfitCard key={outfit.id} id={outfit.id} outfit={outfit} handleEditOutfit={this.handleEditOutfit}/>
+          return (
+            <OutfitCard
+              key={outfit.id}
+              id={outfit.id}
+              outfit={outfit}
+              handleEditOutfit={this.handleEditOutfit}
+              onDragStart={this.cannotDragItem}
+              handleMouseOver={this.noMouseOver}
+            />
+          )
         })}
       </div>
       )

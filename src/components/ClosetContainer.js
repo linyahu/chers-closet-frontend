@@ -4,23 +4,13 @@ import ItemCard from './ItemCard'
 // const userId = 1
 
 class ClosetContainer extends React.Component {
-  // state = {
-  //   items: [],
-  // }
-  //
-  // componentDidMount() {
-  //   fetch("http://localhost:3000/items")
-  //   .then(res => res.json())
-  //   .then( json => {
-  //     let items = json.filter( item => {
-  //       return item.user_id == userId
-  //     })
-  //     this.setState({ items })
-  //   })
-  // }
+
+  handleMouseOver() {
+    console.log("will show some buttons appear?");
+  }
 
   render(){
-    // console.log(this.state.items);
+    console.log("in closet container", this.props.items);
     return (
       <div>
         <h3> MY CLOSET </h3>
@@ -32,6 +22,7 @@ class ClosetContainer extends React.Component {
                 id={item.id}
                 item={item}
                 onDragStart={this.props.onDragStart}
+                handleMouseOver={this.handleMouseOver}
               />
             )
           })
