@@ -11,6 +11,7 @@ import './App.css';
 
 // const userId = 1
 
+
 class App extends Component {
 
   state = {
@@ -20,6 +21,15 @@ class App extends Component {
     draggedItem: {},
     buildingOutfit: [], // will just contain items that are dropped into the div
     currentOutfitItems: [], // just the ids --> to make sure you can't add the same item twice
+  }
+
+
+  clearState = () => {
+    this.setState({
+      draggedItem: {},
+      buildingOutfit: [],
+      currentOutfitItems: [],
+    })
   }
 
   /*********************************
@@ -51,7 +61,6 @@ class App extends Component {
       })
     }
   }
-
 
   selectCurrentOutfit = (items) => {
     // console.log("selectCurrentOutfit", items);
@@ -126,6 +135,7 @@ class App extends Component {
               selectCurrentOutfit={this.selectCurrentOutfit}
               removeFromBuildingOutfit={this.removeFromBuildingOutfit}
               removeFromCurrentOutfitItems={this.removeFromCurrentOutfitItems}
+              clearState={this.clearState}
             />
 
 

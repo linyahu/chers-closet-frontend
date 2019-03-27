@@ -35,7 +35,14 @@ class OutfitContainer extends React.Component {
       // console.log("will remove from the new outfit items");
       this.props.removeFromBuildingOutfit(item)
     }
+  }
 
+
+  hideEditForm = (o) => {
+    this.setState({
+      displayEditOutfitForm: false,
+      outfits: o
+    }, () => this.props.clearState())
   }
 
   handleEditOutfit = (outfit, items) => {
@@ -98,6 +105,7 @@ class OutfitContainer extends React.Component {
             onDragStart={this.cannotDragItem}
             removeItem={this.removeItem}
             deletedItems={this.state.deletedItems}
+            hideEditForm={this.hideEditForm}
           />
         </div>
       )

@@ -68,29 +68,37 @@ class EditOutfit extends Component {
       // .then( json => {
       //   console.log("after add items", json)
       // })
-
     })
   }
 
   deleteItems = (id) => {
+   this.props.deletedItems.map( item => {
+     let data = {
+       outfit_id: id,
+       item_id: item.id
+     }
+     fetch(`http://localhost:3000/outfit_items/${item.id}`, {
+       method: "DELETE",
+       headers: {
+         "Content-Type": "application/json",
+         "Accepts": "application/json"
+       },
+       body: JSON.stringify(data)
+     })
+   })
 
-    this.props.deletedItems.map( item => {
-      let data = {
-        outfit_id: id,
-        item_id: item.id
-      }
+   this.fetchOutfits()
+ }
 
-      fetch(`http://localhost:3000/outfit_items/${item.id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "Accepts": "application/json"
-        },
-        body: JSON.stringify(data)
-      })
-
-    })
-  }
+ fetchOutfits = () => {
+   fetch("http://localhost:3000/outfits")
+   .then( res => res.json())
+   .then( json => {
+     let outfits = json.filter( outfit => outfit.user_id === this.props.user)
+     // this.setState({ outfits })
+     this.props.hideEditForm(outfits)
+   })
+ }
 
 renderCurrentItems = () => {
   // console.log("*** is this being rendered?");
@@ -131,10 +139,11 @@ renderNewItems = () => {
   *********************************/
 
   render() {
+
     // console.log(this.props.currentItems);
     // console.log("new outfit state", this.state);
     // console.log("***inside edit outfit, normal render()", this.props.buildingOutfit);
-    console.log("deleted items", this.props.deletedItems);
+    console.log("props", this.props);
     return (
       <div className="new-outfit">
         <h1> This will be a edit outfit form </h1>
