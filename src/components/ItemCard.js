@@ -2,7 +2,7 @@ import React from 'react'
 
 class ItemCard extends React.Component {
   state = {
-    src: "",
+    src: "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical.jpg",
   }
 
   componentDidMount() {
@@ -15,17 +15,24 @@ class ItemCard extends React.Component {
   }
 
   render(){
-    // console.log("item card", this.props);
+    // console.log("PROPS IN item card", this.props);
     // console.log("state in item card", this.state.src);
     return(
+      <div
+        className="item-card"
+        onDragStart={ () => this.props.onDragStart(this.props.item) }
+
+      >
+        <button
+          className={this.props.button || "hidden-button"}
+          onClick={ () => this.props.removeItem(this.props.item) }
+        >X</button>
         <img
+          className="item-image"
           src={this.state.src}
           alt="fun pic"
-          height="150px"
-          width="130px"
-          onDragStart={ () => this.props.onDragStart(this.props.item) }
-
         />
+      </div>
     )
   }
 
@@ -33,4 +40,4 @@ class ItemCard extends React.Component {
 
 export default ItemCard
 
-// onMouseOver={ () => this.props.handleMouseOver() }
+// onMouseOver={ () => this.props.onMouseOver() }

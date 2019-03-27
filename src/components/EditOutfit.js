@@ -18,6 +18,9 @@ class EditOutfit extends Component {
     });
   };
 
+  onMouseOver = () => {
+    console.log("will display an [x] button");
+  }
 
   editOutfit = () => {
     // this creates the outfit "container"
@@ -41,6 +44,7 @@ class EditOutfit extends Component {
       // console.log(json)
       // then do add items
       this.addItems(outfit.id)
+      this.deleteItems(outfit.id)
     })
   }
 
@@ -68,7 +72,28 @@ class EditOutfit extends Component {
     })
   }
 
+  deleteItems = (id) => {
+
+    this.props.deletedItems.map( item => {
+      let data = {
+        outfit_id: id,
+        item_id: item.id
+      }
+
+      fetch(`http://localhost:3000/outfit_items/${item.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Accepts": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+
+    })
+  }
+
 renderCurrentItems = () => {
+  // console.log("*** is this being rendered?");
   return this.props.currentItems.map( item => {
     return (
       <ItemCard
@@ -76,12 +101,16 @@ renderCurrentItems = () => {
         id={item.item_id}
         item={item}
         onDragStart={this.props.onDragStart}
+        onMouseOver={this.onMouseOver}
+        button="x-button"
+        removeItem={this.props.removeItem}
       />
     )
   })
 }
 
 renderNewItems = () => {
+  // console.log("***inside edit outfit, renderNewItems()", this.props.buildingOutfit);
   return this.props.buildingOutfit.map( item => {
     return (
       <ItemCard
@@ -89,6 +118,9 @@ renderNewItems = () => {
         id={item.id}
         item={item}
         onDragStart={this.props.onDragStart}
+        onMouseOver={this.onMouseOver}
+        button="x-button"
+        removeItem={this.props.removeItem}
       />
     )
   })
@@ -101,7 +133,8 @@ renderNewItems = () => {
   render() {
     // console.log(this.props.currentItems);
     // console.log("new outfit state", this.state);
-    console.log("current items in edit outfit", this.props.currentItems);
+    // console.log("***inside edit outfit, normal render()", this.props.buildingOutfit);
+    console.log("deleted items", this.props.deletedItems);
     return (
       <div className="new-outfit">
         <h1> This will be a edit outfit form </h1>
@@ -111,7 +144,7 @@ renderNewItems = () => {
           onDrop={this.props.onDrop}
         >
           {
-            this.props.currentItems == ""
+            this.props.currentItems == "" && this.props.buildingOutfit == ""
             ?
             <h2> drag items from closet here </h2>
             :

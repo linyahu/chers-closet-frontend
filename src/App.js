@@ -41,6 +41,10 @@ class App extends Component {
   }
 
   onDrop = () => {
+    // console.log("buildingOutfit", this.state.buildingOutfit);
+    // console.log("true or false?", !this.state.buildingOutfit.includes(this.state.draggedItem) && !this.state.currentOutfitItems.includes(this.state.draggedItem.id));
+    let _this = this
+    // debugger
     if (!this.state.buildingOutfit.includes(this.state.draggedItem) && !this.state.currentOutfitItems.includes(this.state.draggedItem.id)) {
       this.setState( prevState => {
         return { buildingOutfit: [...prevState.buildingOutfit, this.state.draggedItem] }
@@ -53,6 +57,19 @@ class App extends Component {
     // console.log("selectCurrentOutfit", items);
     let itemIds = items.map( i => i.item_id)
     this.setState({ currentOutfitItems: itemIds })
+  }
+
+  removeFromBuildingOutfit = (item) => {
+    // console.log("will remove from building outfit", item);
+    this.setState( prevState => {
+      return {buildingOutfit: prevState.buildingOutfit.filter( i => i !== item)}
+    })
+  }
+
+  removeFromCurrentOutfitItems = (item) => {
+    this.setState( prevState => {
+      return { currentOutfitItems: prevState.currentOutfitItems.filter(i => i !== item.item_id) }
+    })
   }
 
 
@@ -78,7 +95,7 @@ class App extends Component {
     // console.log("dragged item", this.state.draggedItem);
     // console.log("items in App", this.state.items);
     // console.log("current outfit items", this.state.currentOutfitItems);
-    console.log("building outfit", this.state.buildingOutfit);
+    console.log("building outfit", this.state.buildingOutfit, "currentOutfitItems", this.state.currentOutfitItems);
 
     return (
 
@@ -107,6 +124,8 @@ class App extends Component {
               buildingOutfit={this.state.buildingOutfit}
               handleEditOutfit={this.handleEditOutfit}
               selectCurrentOutfit={this.selectCurrentOutfit}
+              removeFromBuildingOutfit={this.removeFromBuildingOutfit}
+              removeFromCurrentOutfitItems={this.removeFromCurrentOutfitItems}
             />
 
 

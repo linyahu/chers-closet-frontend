@@ -19,6 +19,9 @@ class NewOutfit extends Component {
     });
   };
 
+  onDragStart() {
+    console.log("can't drag");
+  }
 
   createOutfit = () => {
     // this creates the outfit "container"
@@ -89,7 +92,15 @@ class NewOutfit extends Component {
             <h2> drag items from closet here </h2>
             :
             this.props.currentItems.map( item => {
-              return <ItemCard key={item.id} id={item.id} item={item} />
+              return (
+                <ItemCard
+                  key={item.id}
+                  id={item.id}
+                  item={item}
+                  onDragStart={this.onDragStart}
+                  // handleMouseOver={this.props.handleMouseOver}
+                />
+              )
             })
           }
         </div>

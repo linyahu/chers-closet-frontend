@@ -54,8 +54,41 @@
 }
 
 .item-card {
-  border-color: black;
-  border-style: solid;
+  /* display: inline;
+  height: 200px;
+  width: 150px;
   margin: 10px;
-  padding: 10px;
+  padding: 10px;  */
+   width: 150px;
+   /*border-radius: 25px;*/
+   /* border: 2px solid Black; */
+   padding: 15px 15px 15px 15px;
+   margin: 20px 20px 20px 20px;
+   /* background: #A4D3EE; */
+   overflow: visible;
+   /* box-shadow: 5px 5px 2px #888888; */
+   position: relative;
+   display: inline-grid;
+}
+
+.item-image {
+  position: relative;
+  /* overflow: visible; */
+  height: 150px;
+  width: 130px;
+}
+
+.item-card:hover button.x-button {
+  visibility: visible;
+}
+
+.x-button {
+  visibility: hidden;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.hidden-button {
+  visibility: hidden;
 }
