@@ -69,9 +69,9 @@ class EditOutfit extends Component {
   }
 
 renderCurrentItems = () => {
-  console.log("current items here", this.props.currentItems)
+  // console.log("current items here", this.props.currentItems)
   return this.props.currentItems.map( item => {
-    return <ItemCard key={item.id} id={item.id} item={item} />
+    return <ItemCard key={item.id} id={item.item_id} item={item} />
   })
 }
 
@@ -88,7 +88,8 @@ renderNewItems = () => {
 
   render() {
     // console.log(this.props.currentItems);
-    console.log("new outfit state", this.state);
+    // console.log("new outfit state", this.state);
+    console.log("current items in edit outfit", this.props.currentItems);
     return (
       <div className="new-outfit">
         <h1> This will be a edit outfit form </h1>

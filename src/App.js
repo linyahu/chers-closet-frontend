@@ -19,6 +19,7 @@ class App extends Component {
     displayUploadForm: false,
     draggedItem: {},
     buildingOutfit: [], // will just contain items that are dropped into the div
+    currentOutfitItems: [], // just the ids
   }
 
   /*********************************
@@ -40,13 +41,20 @@ class App extends Component {
   }
 
   onDrop = () => {
-    console.log("gonna drop");
-    if (!this.state.buildingOutfit.includes(this.state.draggedItem)) {
+    if (!this.state.buildingOutfit.includes(this.state.draggedItem) && !this.state.currentOutfitItems.includes(this.state.draggedItem.id)) {
       this.setState( prevState => {
         return { buildingOutfit: [...prevState.buildingOutfit, this.state.draggedItem] }
       })
     }
   }
+
+
+  selectCurrentOutfit = (items) => {
+    // console.log("selectCurrentOutfit", items);
+    let itemIds = items.map( i => i.item_id)
+    this.setState({ currentOutfitItems: itemIds })
+  }
+
 
   /*********************************
           LIFECYCLE METHODS
@@ -68,7 +76,9 @@ class App extends Component {
 
   render() {
     // console.log("dragged item", this.state.draggedItem);
-    console.log("buildingOutfit", this.state.buildingOutfit);
+    // console.log("items in App", this.state.items);
+    // console.log("current outfit items", this.state.currentOutfitItems);
+    console.log("building outfit", this.state.buildingOutfit);
 
     return (
 
@@ -95,6 +105,8 @@ class App extends Component {
               onDragOver={this.onDragOver}
               onDrop={this.onDrop}
               buildingOutfit={this.state.buildingOutfit}
+              handleEditOutfit={this.handleEditOutfit}
+              selectCurrentOutfit={this.selectCurrentOutfit}
             />
 
 

@@ -20,6 +20,18 @@ class OutfitContainer extends React.Component {
     this.setState({ displayNewOutfitForm: toggleForm })
   }
 
+  handleEditOutfit = (outfit, items) => {
+    console.log("editing outfit", outfit, items)
+    let toggleEditOutfit = !this.state.displayEditOutfitForm
+    this.setState({
+      displayEditOutfitForm: toggleEditOutfit,
+      displayNewOutfitForm: false,
+      editCurrentOutfit: outfit,
+      editOutfitItems: items
+    })
+    this.props.selectCurrentOutfit(items)
+  }
+
   componentDidMount() {
     fetch("http://localhost:3000/outfits")
     .then( res => res.json())
@@ -29,41 +41,33 @@ class OutfitContainer extends React.Component {
     })
   }
 
-  handleEditOutfit = (outfit, items) => {
-    console.log("editing outfit")
-    let toggleEditOutfit = !this.state.displayEditOutfitForm
-    this.setState({
-      displayEditOutfitForm: toggleEditOutfit,
-      displayNewOutfitForm: false,
-      editCurrentOutfit: outfit,
-      editOutfitItems: items
-    })
-  }
+  /*********************************
+              RENDERS
+  *********************************/
 
   renderBottomComponent = () => {
     if (this.state.displayNewOutfitForm === true) {
       return  (
         <div>
-        <NewOutfit
-          onDragOver={this.props.onDragOver}
-          onDrop={this.props.onDrop}
-          currentItems={this.props.buildingOutfit}
-          user={this.props.user}
-        />
+          <NewOutfit
+            onDragOver={this.props.onDragOver}
+            onDrop={this.props.onDrop}
+            currentItems={this.props.buildingOutfit}
+            user={this.props.user}
+          />
         </div>
       )
     } else if (this.state.displayEditOutfitForm === true ) {
       return (
         <div>
-        <EditOutfit
-          onDragOver={this.props.onDragOver}
-          onDrop={this.props.onDrop}
-          currentItems={this.state.editOutfitItems}
-          user={this.props.user}
-          outfit={this.state.editCurrentOutfit}
-          buildingOutfit={this.props.buildingOutfit}
-
-        />
+          <EditOutfit
+            onDragOver={this.props.onDragOver}
+            onDrop={this.props.onDrop}
+            currentItems={this.state.editOutfitItems}
+            user={this.props.user}
+            outfit={this.state.editCurrentOutfit}
+            buildingOutfit={this.props.buildingOutfit}
+          />
         </div>
       )
     } else {
