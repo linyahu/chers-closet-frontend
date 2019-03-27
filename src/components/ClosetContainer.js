@@ -36,6 +36,10 @@ class ClosetContainer extends React.Component {
     }
   }
 
+  showEdit = () => {
+
+  }
+
   render(){
     // console.log("in closet container", this.props.items.slice(this.state.displayStart, this.state.displayStart + 4));
     // console.log("max start?", this.props.items.length - this.props.items.length % 4);
@@ -52,7 +56,7 @@ class ClosetContainer extends React.Component {
                 id={item.id}
                 item={item}
                 onDragStart={this.props.onDragStart}
-                onMouseOver={this.onMouseOver}
+                button={"edit-btn"}
               />
             )
           })
