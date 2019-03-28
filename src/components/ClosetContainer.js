@@ -5,8 +5,6 @@ import arrow from './arrow.png'
 class ClosetContainer extends React.Component {
   state = {
     displayStart: 0,
-    // maxStart: 0,
-    // lastItem: this.props.items[this.props.items.length - 1]
   }
 
   onMouseOver() {
@@ -50,6 +48,20 @@ class ClosetContainer extends React.Component {
       <div>
       <div className="closet-box">
         <h2> my closet </h2>
+
+        <label>Filter by category</label>
+        <select onChange={this.props.filterItems} name="category" value={this.props.category}>
+          <option value="">All</option>
+          <option value="tops">Tops</option>
+          <option value="bottoms">Bottoms</option>
+          <option value="outerwear">Outerwear</option>
+          <option value="dresses">Dresses</option>
+          <option value="shoes">Shoes</option>
+          <option value="accessories">Accessories</option>
+          <option value="handbag">Handbag</option>
+        </select>
+
+
         < img className="left-arrow" src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png" width="90px" onClick={this.displayPreviousItems}/>
 
         {
