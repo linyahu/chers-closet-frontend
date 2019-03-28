@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemCard from './ItemCard'
+import arrow from './arrow.png'
 
 class ClosetContainer extends React.Component {
   state = {
@@ -42,12 +43,16 @@ class ClosetContainer extends React.Component {
     // console.log("items in closet", this.findLastItem());
     return (
       <div>
-        <h3> MY CLOSET </h3>
-        <button onClick={this.displayPreviousItems}> Previous </button>
+      <div className="closet-box">
+        <h2> my closet </h2>
+        < img className="left-arrow" src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png" width="90px" onClick={this.displayPreviousItems}/>
+
         {
           this.props.items.slice(this.state.displayStart, this.state.displayStart + 4).map( item => {
             return (
               <ItemCard
+                css={"in-closet"}
+                cssImage={"closet-image"}
                 key={item.id}
                 id={item.id}
                 item={item}
@@ -57,7 +62,13 @@ class ClosetContainer extends React.Component {
             )
           })
         }
-        <button onClick={this.displayNextItems}> Next </button>
+
+
+        < img className="right-arrow" src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png" width="90px" onClick={this.displayNextItems}/>
+        <br/>
+        <br/>
+        <button onClick={() => this.props.renderUploadForm()}> Add Item To Closet </button>
+      </div>
       </div>
     )
   }

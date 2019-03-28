@@ -105,6 +105,8 @@ renderCurrentItems = () => {
   return this.props.currentItems.map( item => {
     return (
       <ItemCard
+        css={"item-card"}
+        cssImage={"item-image"}
         key={item.id}
         id={item.item_id}
         item={item}
@@ -122,6 +124,8 @@ renderNewItems = () => {
   return this.props.buildingOutfit.map( item => {
     return (
       <ItemCard
+        css={"item-card"}
+        cssImage={"item-image"}
         key={item.id}
         id={item.id}
         item={item}

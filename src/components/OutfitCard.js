@@ -16,25 +16,20 @@ class OutfitCard extends React.Component{
     })
   }
 
-
-
-
   render(){
 
     // console.log(`items in outfit #${this.props.id}:`, this.state.items);
 
     return(
       <div className="outfitcard">
-        <p> this is outfit {this.props.id} </p>
-        <button onClick={() => this.props.handleEditOutfit(this.props.outfit, this.state.items)} >
-          Edit Outfit
-        </button>
-        <p> Description: {this.props.outfit.description}</p>
-
+        Outfit: {this.props.outfit.description}
+        <br/>
         {
           this.state.items.map( item => {
             return (
               <ItemCard
+                css={"in-outfit"}
+                cssImage={"outfit-image"}
                 key={item.item_id}
                 id={item.item_id}
                 item={item}
@@ -44,6 +39,12 @@ class OutfitCard extends React.Component{
             )
           })
         }
+        <br/>
+        <br/>
+        <button onClick={() => this.props.handleEditOutfit(this.props.outfit, this.state.items)} >
+        Edit Outfit
+        </button>
+
 
       </div>
     )
@@ -52,3 +53,7 @@ class OutfitCard extends React.Component{
 }
 
 export default OutfitCard
+
+
+
+// <p> this is outfit {this.props.id} </p>

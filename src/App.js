@@ -124,6 +124,7 @@ class App extends Component {
               user={this.state.user}
               items={this.state.items}
               onDragStart={this.onDragStart}
+              renderUploadForm={this.renderUploadForm}
             />
 
             <OutfitContainer

@@ -19,7 +19,7 @@ class ItemCard extends React.Component {
     // console.log("state in item card", this.state.src);
     return(
       <div
-        className="item-card"
+        className={this.props.css}
         onDragStart={ () => this.props.onDragStart(this.props.item) }
 
       >
@@ -28,7 +28,7 @@ class ItemCard extends React.Component {
           onClick={ () => this.props.removeItem(this.props.item) }
         >X</button>
         <img
-          className="item-image"
+          className={this.props.cssImage}
           src={this.state.src}
           alt="fun pic"
         />

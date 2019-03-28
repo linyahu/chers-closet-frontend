@@ -111,8 +111,13 @@ class OutfitContainer extends React.Component {
       )
     } else {
       return (
-      <div>
+      <div className="closet-box">
+      <h2> my outfits </h2>
+      <br/>
+
         <button onClick={this.displayNewOutfitForm}> Create New Outfit </button>
+        <br/>
+        <br/>
         {this.state.outfits.map(outfit => {
           return (
             <OutfitCard
@@ -138,7 +143,6 @@ class OutfitContainer extends React.Component {
     console.log("all the items we have rihgt now", this.state.currentItems, this.props.buildingOutfit);
     return (
       <div>
-        <h1> OUTFITS </h1>
         {this.renderBottomComponent()}
       </div>
     )

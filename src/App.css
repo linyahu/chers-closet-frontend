@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Crimson Text', serif;
 }
 
 .App-logo {
@@ -32,11 +33,24 @@
   }
 }
 
+h1 {
+  color: rgb(229, 146, 171);
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 30px;
+  margin: 0px;
+}
+
 .outfitcard {
-  border-color: black;
+  border-color: gray;
   border-style: solid;
   margin: 10px;
-  padding: 10px;
+  padding-top: 10px;
+  display: inline-table;
+  height: 300px;
+  width: 300px;
 }
 
 .new-outfit {
@@ -53,29 +67,61 @@
   padding: 10px;
 }
 
-.item-card {
-  /* display: inline;
-  height: 200px;
-  width: 150px;
-  margin: 10px;
-  padding: 10px;  */
-   width: 150px;
-   /*border-radius: 25px;*/
-   /* border: 2px solid Black; */
-   padding: 15px 15px 15px 15px;
-   margin: 20px 20px 20px 20px;
-   /* background: #A4D3EE; */
+
+.in-closet {
+   margin-left: 20px;
+   margin-right: 20px;
    overflow: visible;
-   /* box-shadow: 5px 5px 2px #888888; */
+   position: relative;
+   display: inline-grid;
+
+}
+
+.in-outfit {
+   overflow: visible;
    position: relative;
    display: inline-grid;
 }
 
+.closet-image{
+  position: relative;
+  height: 200px;
+  width: 190px;
+}
+
+.outfit-image{
+  /* display: inline; */
+  /* position: relative; */
+  display: inline-table;
+  height: 90px;
+  width: 90px;
+  margin-left: 5px;
+}
+
 .item-image {
   position: relative;
-  /* overflow: visible; */
   height: 150px;
   width: 130px;
+}
+
+.item-card {
+  width: auto;
+  height: auto;
+  /* overflow: visible; */
+  /* position: relative; */
+  display: inline-grid;
+  padding-right: 20px;
+}
+
+.item-card:hover button.x-button {
+  visibility: visible;
+}
+
+.item-card {
+  width: 150px;
+  overflow: visible;
+  position: relative;
+  display: inline-grid;
 }
 
 .item-card:hover button.x-button {
@@ -92,3 +138,95 @@
 .hidden-button {
   visibility: hidden;
 }
+
+.left-arrow {
+  transform: rotate(180deg);
+  margin-bottom: -75px;
+  margin-left: 20px;
+}
+
+.left-arrow:hover {
+background-color:  rgba(229, 146, 171, 0.3);
+-webkit-box-shadow: 0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+-moz-box-shadow:    0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+box-shadow:         0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+}
+
+.right-arrow:hover {
+background-color:  rgba(229, 146, 171, 0.3);
+-webkit-box-shadow: 0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+-moz-box-shadow:    0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+box-shadow:         0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+}
+
+.right-arrow {
+  margin-bottom: -75px;
+  margin-left: 20px;
+}
+
+button {
+  font-family: arial;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 5px;
+}
+
+button:hover {
+  color: white;
+  background-color: rgb(229, 146, 171);
+}
+
+.chers {
+  height: 200px;
+  width: 270px;
+}
+
+.closet {
+  height: 270px;
+  width: 270px;
+}
+
+@font-face {
+    font-family: 'Crimson Text', serif;
+    src: url("https://fonts.googleapis.com/css?family=Crimson+Text")
+  }
+
+  /* img:hover{
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 5px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 5px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+} */
+
+.closet-box{
+  border-color: rgb(242, 243, 244);
+  border-style: solid;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* left-arrow:hover{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+ -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+-moz-box-shadow:    0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+box-shadow:         0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+background-color: red;
+}
+left-arrow:last-of-type:hover{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+ -webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+-moz-box-shadow:    0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+box-shadow:         0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+background-color: red;
+} */

@@ -5,9 +5,9 @@ class Header extends React.Component {
   render(){
     return (
       <div>
-      <h1> chers closet </h1>
-      <p> nav bar </p>
-      <button onClick={() => this.props.renderUploadForm()}> Add Item To Closet </button>
+      <br/>
+      <br/>
+      < img className="chers" src={process.env.PUBLIC_URL + '/chers.png'} />
       </div>
     )
   }
@@ -16,3 +16,6 @@ class Header extends React.Component {
 };
 
 export default Header
+
+
+// <button onClick={() => this.props.renderUploadForm()}> Add Item To Closet </button>
