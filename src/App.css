@@ -44,12 +44,12 @@ h2 {
 }
 
 .outfitcard {
-  border-color: gray;
+  border-color: rgb(255, 244, 247);
   border-style: solid;
   margin: 10px;
   padding-top: 10px;
   display: inline-table;
-  height: 300px;
+  height: 375px;
   width: 300px;
 }
 
@@ -67,7 +67,6 @@ h2 {
   padding: 10px;
 }
 
-
 .in-closet {
    margin-left: 20px;
    margin-right: 20px;
@@ -78,9 +77,6 @@ h2 {
 }
 
 .in-outfit {
-   width: 150px;
-   padding: 15px 15px 15px 15px;
-   margin: 20px 20px 20px 20px;
    overflow: visible;
    position: relative;
    display: inline-grid;
@@ -93,9 +89,10 @@ h2 {
 }
 
 .outfit-image{
-  /* display: inline; */
-  /* position: relative; */
-  display: inline-table;
+  display: inline;
+  /* position: relative;
+  display: inline-table; */
+  margin-bottom: -20px;
   height: 90px;
   width: 90px;
   margin-left: 5px;
@@ -155,8 +152,9 @@ h2 {
 
 .left-arrow {
   transform: rotate(180deg);
-  margin-bottom: -75px;
-  margin-left: 20px;
+  margin-bottom: -115px;
+  /* margin-left: 10px; */
+  margin-right: 20px;
 }
 
 .left-arrow:hover {
@@ -174,8 +172,9 @@ box-shadow:         0px 0px 30px 0px rgba(229, 146, 171, 0.67);
 }
 
 .right-arrow {
-  margin-bottom: -75px;
-  margin-left: 20px;
+  margin-bottom: -115px;
+  /* margin-left: 20px; */
+  margin-right: 20px;
 }
 
 button {
@@ -186,6 +185,8 @@ button {
   padding-left: 5px;
   padding-right: 5px;
   margin-bottom: 5px;
+  color: black;
+  background-color: rgb(255, 244, 247);
 }
 
 button:hover {
@@ -226,21 +227,9 @@ button:hover {
   padding-bottom: 10px;
 }
 
-/* left-arrow:hover{
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
- -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
--moz-box-shadow:    0px 0px 30px 0px rgba(0, 255, 0, 0.67);
-box-shadow:         0px 0px 30px 0px rgba(0, 255, 0, 0.67);
-background-color: red;
+.add-item {
+  width: 900px;
+  margin-top:10px;
+  padding: 5px;
+  margin-bottom: -20px;
 }
-left-arrow:last-of-type:hover{
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
- -webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
--moz-box-shadow:    0px 0px 30px 0px rgba(232, 0, 0, 0.67);
-box-shadow:         0px 0px 30px 0px rgba(232, 0, 0, 0.67);
-background-color: red;
-} */

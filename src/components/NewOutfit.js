@@ -94,10 +94,14 @@ class NewOutfit extends Component {
             this.props.currentItems.map( item => {
               return (
                 <ItemCard
+                  css={"item-card"}
+                  cssImage={"item-image"}
+                  button="x-button"
                   key={item.id}
                   id={item.id}
                   item={item}
                   onDragStart={this.onDragStart}
+                  removeItem={this.props.removeItem}
                   // handleMouseOver={this.props.handleMouseOver}
                 />
               )
