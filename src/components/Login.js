@@ -11,8 +11,10 @@ class Login extends Component {
   login = (e) => {
     e.preventDefault()
 
-    this.props.loginUser(this.state.username, this.state.password)
-    // console.log("login", this.state.username, this.state.password);
+    if (this.state.username !== "" || this.state.password !== "") {
+      this.props.loginUser(this.state.username, this.state.password)
+    }
+
   }
 
   signupSubmit = (e) => {

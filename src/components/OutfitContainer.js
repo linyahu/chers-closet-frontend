@@ -2,6 +2,7 @@ import React from 'react'
 import OutfitCard from './OutfitCard'
 import NewOutfit from "./NewOutfit"
 import EditOutfit from "./EditOutfit"
+import FakeItemCard from './FakeItemCard'
 
 class OutfitContainer extends React.Component {
   // 1. get all outfits that belong to the user....
@@ -184,6 +185,9 @@ class OutfitContainer extends React.Component {
 
         <div className="outfits">
         {
+          this.state.outfits == "" ?
+          <FakeItemCard />
+          :
           this.state.outfits.slice(this.state.displayStart, this.state.displayStart + 3).map(outfit => {
             return (
               <OutfitCard

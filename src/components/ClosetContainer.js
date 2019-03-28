@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemCard from './ItemCard'
+import FakeItemCard from './FakeItemCard'
 // import arrow from './arrow.png'
 
 class ClosetContainer extends React.Component {
@@ -74,6 +75,9 @@ class ClosetContainer extends React.Component {
         />
 
         {
+          this.props.items == "" ?
+            <FakeItemCard />
+          :
           this.props.items.slice(this.state.displayStart, this.state.displayStart + 4).map( item => {
             return (
               <ItemCard

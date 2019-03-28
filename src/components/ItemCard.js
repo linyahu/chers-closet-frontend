@@ -20,33 +20,6 @@ class ItemCard extends Component {
     })
   }
 
-  renderEdit() {
-    if (this.state.edit) {
-      return (
-        <Fragment>
-          <span className="item-image">
-            <p> does this thing work </p>
-            <p> do i have access to props? </p>
-            <p> Description{this.props.item.description} </p>
-          </span>
-        </Fragment>
-      )
-    } else {
-      return (
-        <Fragment>
-          <button
-            className={this.props.button || "hidden-button"}
-            onClick={ () => this.props.removeItem(this.props.item) }
-            >X</button>
-          <img
-            className="item-image"
-            src={this.state.src}
-            alt="fun pic"
-          />
-        </Fragment>
-      )
-    }
-  }
 
 
   render(){

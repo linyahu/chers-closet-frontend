@@ -13,7 +13,8 @@ import './App.css';
 class App extends Component {
 
   state = {
-    user: null,
+    // masterUser: null,
+    user: 1,
     allItems: [],
     items: [],
     displayUploadForm: false,

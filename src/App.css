@@ -99,6 +99,12 @@ h2 {
   width: 190px;
 }
 
+.fake-closet-image{
+  position: relative;
+  height: 180px;
+  width: 160px;
+}
+
 .outfit-image{
   display: inline;
   margin-bottom: -20px;
