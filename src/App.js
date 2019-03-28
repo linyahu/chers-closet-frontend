@@ -9,18 +9,35 @@ import Header from "./components/Header"
 
 import './App.css';
 
-// const userId = 1
-
 
 class App extends Component {
 
   state = {
     user: 1,
+    allItems: [],
     items: [],
     displayUploadForm: false,
     draggedItem: {},
     buildingOutfit: [], // will just contain items that are dropped into the div
     currentOutfitItems: [], // just the ids --> to make sure you can't add the same item twice
+    category: ""
+  }
+
+  filterItems = (e) => {
+    console.log("will filter items", e.target.name, e.target.value);
+    let filteredItems = this.state.allItems.filter( i => i.category === e.target.value)
+    console.log(filteredItems);
+
+    e.target.value === "" ?
+    this.setState({
+      category: "",
+      items: this.state.allItems
+    })
+    :
+    this.setState({
+      category: e.target.value,
+      items: filteredItems
+    })
   }
 
 
@@ -102,7 +119,7 @@ class App extends Component {
       let items = json.filter( item => {
         return item.user_id === this.state.user
       })
-      this.setState({ items })
+      this.setState({ items, allItems: items })
     })
   }
 
@@ -153,6 +170,8 @@ class App extends Component {
               onDragStart={this.onDragStart}
               deleteItem={this.deleteItem}
               renderUploadForm={this.renderUploadForm}
+              filterItems={this.filterItems}
+              category={this.state.category}
             />
 
             <OutfitContainer
