@@ -44,9 +44,9 @@ class ItemCard extends React.Component {
             alt="fun pic"
           />
           <button
-            className={this.props.button || "hidden-button"}
-            onClick={ () => this.editItem(this.props.item) }
-            >Edit</button>
+            className={this.props.deleteBtn || "hidden-button"}
+            onClick={ () => this.props.deleteItem(this.props.item) }
+            >Delete</button>
         </Fragment>
       )
     }

@@ -79,11 +79,11 @@
   right: 2px;
 }
 
-.item-card:hover button.edit-btn {
+.item-card:hover button.delete-btn {
   visibility: visible;
 }
 
-.edit-btn {
+.delete-btn {
   visibility: hidden;
   position: absolute;
   bottom: -2px;

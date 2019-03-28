@@ -32,6 +32,16 @@ class App extends Component {
     })
   }
 
+  deleteItem = (item) => {
+    console.log("gonna delete this item", item, "from", this.state.items);
+    // reset state in my items
+    // also hit the backend on the delete fetch
+    this.fetchDeleteItem(item.id)
+    // this.fetchOutfitItems()
+    window.location.reload()
+    // currently will have to force a reload of the page...
+  }
+
   /*********************************
           EVENT LISTENERS
   *********************************/
@@ -83,7 +93,7 @@ class App extends Component {
 
 
   /*********************************
-          LIFECYCLE METHODS
+    LIFECYCLE METHODS / FETCHES
   *********************************/
   componentDidMount() {
     fetch("http://localhost:3000/items")
@@ -93,6 +103,25 @@ class App extends Component {
         return item.user_id === this.state.user
       })
       this.setState({ items })
+    })
+  }
+
+  fetchDeleteItem = (id) => {
+    fetch(`http://localhost:3000/items/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      }
+    })
+    .then()
+  }
+
+  fetchOutfitItems = () => {
+    fetch("http://localhost:3000/outfit_items")
+    .then(res => res.json())
+    .then( json => {
+      console.log("fetching outfit items after deleting an item", json);
     })
   }
 
@@ -124,6 +153,7 @@ class App extends Component {
               user={this.state.user}
               items={this.state.items}
               onDragStart={this.onDragStart}
+              deleteItem={this.deleteItem}
             />
 
             <OutfitContainer
