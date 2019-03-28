@@ -20,11 +20,9 @@ class NewOutfit extends Component {
   };
 
   onDragStart() {
-    console.log("can't drag");
   }
 
   createOutfit = () => {
-    // this creates the outfit "container"
     let data = {
       description: this.state.description,
       category: this.state.category,
@@ -42,11 +40,9 @@ class NewOutfit extends Component {
     })
     .then(res => res.json())
     .then( outfit => {
-      // console.log(json)
-      // then do add items
       this.addItems(outfit)
     })
-    // .then( (outfit) => this.props.addToOutfits(outfit) )
+
 
   }
 
@@ -57,7 +53,6 @@ class NewOutfit extends Component {
         outfit_id: outfit.id,
         item_id: item.id
       }
-      // console.log(data);
       fetch("http://localhost:3000/outfit_items", {
         method: "POST",
         headers: {
@@ -68,17 +63,12 @@ class NewOutfit extends Component {
       })
       .then(res => res.json())
       .then( json => {
-        console.log("after add items", json, item)
 
         if (json.item_id === this.props.currentItems[this.props.currentItems.length - 1].id) {
-          console.log("1) &&& this is the last one!");
           this.props.addToOutfits(outfit)
         }
       })
     })
-
-    // window.location.reload()
-
 
   }
   /*********************************
@@ -86,8 +76,6 @@ class NewOutfit extends Component {
   *********************************/
 
   render() {
-    // console.log(this.props.currentItems);
-    console.log("new outfit state", this.state);
     return (
       <div className="new-outfit">
         <h1> This will be a new outfit form </h1>

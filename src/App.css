@@ -420,3 +420,29 @@ button {
         }
     }
 }
+
+
+.login {
+  margin: auto;
+  margin-top: 120px;
+  align-content: center;
+  padding: 60px;
+  border-color: pink;
+  border-style: solid;
+  height: 140px;
+  width: 300px;
+}
+
+.signup {
+  margin: auto;
+  margin-top: 120px;
+  padding: 60px;
+  border-color: pink;
+  border-style: solid;
+  height: 200px;
+  width: 300px;
+}
+
+a:hover {
+  color: pink;
+}

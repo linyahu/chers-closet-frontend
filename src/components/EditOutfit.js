@@ -19,7 +19,7 @@ class EditOutfit extends Component {
   };
 
   onMouseOver = () => {
-    console.log("will display an [x] button");
+    // console.log("will display an [x] button");
   }
 
   editOutfit = () => {
@@ -51,10 +51,12 @@ class EditOutfit extends Component {
   addItems = (id) => {
     // this creates each outfit-item
     this.props.buildingOutfit.map( item => {
+
       let data = {
         outfit_id: id,
         item_id: item.id
       }
+
       // console.log(data);
       fetch("http://localhost:3000/outfit_items", {
         method: "POST",
@@ -64,10 +66,10 @@ class EditOutfit extends Component {
         },
         body: JSON.stringify(data)
       })
-      // .then(res => res.json())
-      // .then( json => {
-      //   console.log("after add items", json)
-      // })
+      .then(res => res.json())
+      .then( json => {
+        // console.log("after add items", json)
+      })
     })
   }
 
@@ -86,7 +88,6 @@ class EditOutfit extends Component {
        body: JSON.stringify(data)
      })
    })
-
    this.fetchOutfits()
  }
 
