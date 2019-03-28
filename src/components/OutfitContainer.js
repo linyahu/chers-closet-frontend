@@ -14,6 +14,38 @@ class OutfitContainer extends React.Component {
     editCurrentOutfit: {},
     currentItems: [], // contains the items that are ALREADY in the outfit that you are trying to edit
     deletedItems: [],
+    displayStart: 0,
+  }
+
+  displayNextItems = () => {
+    let i = this.state.outfits[this.state.outfits.length - 1]
+
+    if (this.state.outfits.slice(this.state.displayStart, this.state.displayStart + 3).includes(i)) {
+      this.setState({ displayStart: 0 })
+    } else {
+      this.setState( prevState => {
+        return { displayStart: prevState.displayStart + 3 }
+      })
+    }
+
+  }
+
+  displayPreviousItems = () => {
+    if (this.state.displayStart === 0) {
+      (this.state.outfits.length % 3) !== 0  ?
+        this.setState({
+          displayStart: this.state.outfits.length - this.state.outfits.length % 3
+        })
+      :
+        this.setState({
+          displayStart: this.state.outfits.length - 3
+        })
+
+    } else {
+      this.setState( prevState => {
+        return { displayStart: prevState.displayStart - 3 }
+      })
+    }
   }
 
   displayNewOutfitForm = () => {
@@ -37,9 +69,21 @@ class OutfitContainer extends React.Component {
     }
   }
 
+  addToOutfits = (outfit) => {
+
+    // let newOutfits = [outfit, ...this.state.outfits]
+
+    this.setState( prevState => {
+      return {
+        displayNewOutfitForm: false,
+        outfits: [outfit, ...prevState.outfits]
+      }
+    }, () => this.props.clearState())
+  }
+
 
   hideEditForm = (o) => {
-    console.log("what are outfits now?", o);
+    // console.log("what are outfits now?", o);
     this.setState({
       displayEditOutfitForm: false,
       outfits: o
@@ -47,7 +91,7 @@ class OutfitContainer extends React.Component {
   }
 
   handleEditOutfit = (outfit, items) => {
-    console.log("editing outfit", outfit, items)
+    // console.log("editing outfit", outfit, items)
     let toggleEditOutfit = !this.state.displayEditOutfitForm
     this.setState({
       displayEditOutfitForm: toggleEditOutfit,
@@ -90,6 +134,7 @@ class OutfitContainer extends React.Component {
             user={this.props.user}
             onDragStart={this.cannotDragItem}
             removeItem={this.removeItem}
+            addToOutfits={this.addToOutfits}
           />
         </div>
       )
@@ -119,19 +164,24 @@ class OutfitContainer extends React.Component {
 
         <button onClick={this.displayNewOutfitForm}> Create New Outfit </button>
         <br/>
+
+      <img className="left-arrow" src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png" width="90px" onClick={this.displayPreviousItems}/>
         <br/>
-        {this.state.outfits.map(outfit => {
-          return (
-            <OutfitCard
-              key={outfit.id}
-              id={outfit.id}
-              outfit={outfit}
-              handleEditOutfit={this.handleEditOutfit}
-              onDragStart={this.cannotDragItem}
-              onMouseOver={this.noMouseOver}
-            />
-          )
-        })}
+        {
+          this.state.outfits.slice(this.state.displayStart, this.state.displayStart + 3).map(outfit => {
+            return (
+              <OutfitCard
+                key={outfit.id}
+                id={outfit.id}
+                outfit={outfit}
+                handleEditOutfit={this.handleEditOutfit}
+                onDragStart={this.cannotDragItem}
+                onMouseOver={this.noMouseOver}
+              />
+            )
+          })
+        }
+        <img className="right-arrow" src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png" width="90px" onClick={this.displayNextItems}/>
       </div>
       )
     }
@@ -139,10 +189,7 @@ class OutfitContainer extends React.Component {
 
 
   render(){
-    // console.log("current ouftis", this.state.outfits)
-    // console.log("deletedItems", this.state.deletedItems);
-    // console.log("what are the props in here again? outfit container", this.props);
-    console.log("all the items we have rihgt now", this.state.currentItems, this.props.buildingOutfit);
+    console.log("current outfits", this.state.outfits)
     return (
       <div>
         {this.renderBottomComponent()}

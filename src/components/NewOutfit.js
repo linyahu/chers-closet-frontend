@@ -44,15 +44,17 @@ class NewOutfit extends Component {
     .then( outfit => {
       // console.log(json)
       // then do add items
-      this.addItems(outfit.id)
+      this.addItems(outfit)
     })
+    // .then( (outfit) => this.props.addToOutfits(outfit) )
+
   }
 
-  addItems = (id) => {
+  addItems = (outfit) => {
     // this creates each outfit-item
     this.props.currentItems.map( item => {
       let data = {
-        outfit_id: id,
+        outfit_id: outfit.id,
         item_id: item.id
       }
       // console.log(data);
@@ -64,12 +66,20 @@ class NewOutfit extends Component {
         },
         body: JSON.stringify(data)
       })
-      // .then(res => res.json())
-      // .then( json => {
-      //   console.log("after add items", json)
-      // })
+      .then(res => res.json())
+      .then( json => {
+        console.log("after add items", json, item)
 
+        if (json.item_id === this.props.currentItems[this.props.currentItems.length - 1].id) {
+          console.log("1) &&& this is the last one!");
+          this.props.addToOutfits(outfit)
+        }
+      })
     })
+
+    // window.location.reload()
+
+
   }
   /*********************************
               RENDERS

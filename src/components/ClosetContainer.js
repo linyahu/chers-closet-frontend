@@ -5,7 +5,7 @@ import arrow from './arrow.png'
 class ClosetContainer extends React.Component {
   state = {
     displayStart: 0,
-    maxStart: 0,
+    // maxStart: 0,
     // lastItem: this.props.items[this.props.items.length - 1]
   }
 
@@ -27,9 +27,15 @@ class ClosetContainer extends React.Component {
 
   displayPreviousItems = () => {
     if (this.state.displayStart === 0) {
-      this.setState({
-        displayStart: this.props.items.length - this.props.items.length % 4
-      })
+      (this.props.items.length % 4) !== 0  ?
+        this.setState({
+          displayStart: this.props.items.length - this.props.items.length % 4
+        })
+      :
+        this.setState({
+          displayStart: this.props.items.length - 4
+        })
+
     } else {
       this.setState( prevState => {
         return { displayStart: prevState.displayStart - 4 }
@@ -40,9 +46,6 @@ class ClosetContainer extends React.Component {
 
 
   render(){
-    // console.log("in closet container", this.props.items.slice(this.state.displayStart, this.state.displayStart + 4));
-    // console.log("max start?", this.props.items.length - this.props.items.length % 4);
-    // console.log("items in closet", this.findLastItem());
     return (
       <div>
       <div className="closet-box">
@@ -65,7 +68,6 @@ class ClosetContainer extends React.Component {
             )
           })
         }
-
 
         < img className="right-arrow" src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png" width="90px" onClick={this.displayNextItems}/>
         <br/>
