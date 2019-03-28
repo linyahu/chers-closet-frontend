@@ -3,9 +3,9 @@ import ItemCard from './ItemCard'
 
 class OutfitCard extends React.Component{
   // outfit card will render the outfit for that specific outfit id
-  state = {
-    items: [],
-  }
+  // state = {
+  //   items: [],
+  // }
 
   componentDidMount() {
     fetch("http://localhost:3000/outfit_items")
@@ -16,13 +16,25 @@ class OutfitCard extends React.Component{
     })
   }
 
+  renderItems() {
+    let items = this.props.outfitItems.filter( oi => oi.outfit_id === this.props.id )
 
-
+    return items.map( item => {
+      return (
+        <ItemCard
+          key={item.item_id}
+          id={item.item_id}
+          item={item}
+          onDragStart={this.props.onDragStart}
+          onMouseOver={this.props.onMouseOver}
+          />
+      )
+    })
+  }
 
   render(){
-
-    // console.log(`items in outfit #${this.props.id}:`, this.state.items);
-
+    console.log("props down to outfit card", this.props.outfitItems);
+    // console.log("then what is state down here?", this.state.items);
     return(
       <div className="outfitcard">
         <p> this is outfit {this.props.id} </p>
@@ -32,17 +44,7 @@ class OutfitCard extends React.Component{
         <p> Description: {this.props.outfit.description}</p>
 
         {
-          this.state.items.map( item => {
-            return (
-              <ItemCard
-                key={item.item_id}
-                id={item.item_id}
-                item={item}
-                onDragStart={this.props.onDragStart}
-                onMouseOver={this.props.onMouseOver}
-              />
-            )
-          })
+          this.renderItems()
         }
 
       </div>

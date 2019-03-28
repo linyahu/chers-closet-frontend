@@ -36,14 +36,15 @@ class ClosetContainer extends React.Component {
     }
   }
 
-  showEdit = () => {
 
-  }
 
   render(){
     // console.log("in closet container", this.props.items.slice(this.state.displayStart, this.state.displayStart + 4));
     // console.log("max start?", this.props.items.length - this.props.items.length % 4);
     // console.log("items in closet", this.findLastItem());
+    console.log("is the ClosetContainer rendering again", this.props.items);
+    // console.log("wtf is happening");
+
     return (
       <div>
         <h3> MY CLOSET </h3>
@@ -52,11 +53,13 @@ class ClosetContainer extends React.Component {
           this.props.items.slice(this.state.displayStart, this.state.displayStart + 4).map( item => {
             return (
               <ItemCard
+                css="item-card"
                 key={item.id}
                 id={item.id}
                 item={item}
                 onDragStart={this.props.onDragStart}
-                button={"edit-btn"}
+                delete={"delete-btn"}
+                deleteItem={this.props.deleteItem}
               />
             )
           })

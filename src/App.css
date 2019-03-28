@@ -40,7 +40,7 @@
 }
 
 .new-outfit {
-  border-color: blue;
+  border-color: black;
   border-style: solid;
   margin: 10px;
   padding: 10px;
@@ -63,9 +63,19 @@
 }
 
 .item-image {
-  position: relative;
+  /* position: relative; */
   height: 150px;
   width: 130px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.item-form {
+  top: 5px;
+  /* position: absolute; */
+  display: inline-flex;
+  border-color: red;
+  border-style: solid;
 }
 
 .item-card:hover button.x-button {
@@ -79,11 +89,11 @@
   right: 2px;
 }
 
-.item-card:hover button.edit-btn {
+.item-card:hover button.delete-btn {
   visibility: visible;
 }
 
-.edit-btn {
+.delete-btn {
   visibility: hidden;
   position: absolute;
   bottom: -2px;
@@ -92,4 +102,8 @@
 
 .hidden-button {
   visibility: hidden;
+}
+
+.test {
+  border-color: black;
 }

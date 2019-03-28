@@ -80,7 +80,6 @@ class NewOutfit extends Component {
     console.log("new outfit state", this.state);
     return (
       <div className="new-outfit">
-        <h1> This will be a new outfit form </h1>
         <div
           onDragOver={this.props.onDragOver}
           onDrop={this.props.onDrop}

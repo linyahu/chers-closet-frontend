@@ -9,22 +9,22 @@ import Header from "./components/Header"
 
 import './App.css';
 
-// const userId = 1
-
-
 class App extends Component {
 
   state = {
     user: 1,
     items: [],
+    outfitItems: [], // gets passed down to the outfitcard to render the items in the outfit
     displayUploadForm: false,
     draggedItem: {},
     buildingOutfit: [], // will just contain items that are dropped into the div
     currentOutfitItems: [], // just the ids --> to make sure you can't add the same item twice
+    // reset: false,
   }
 
 
   clearState = () => {
+    this.fetchOutfitItems()
     this.setState({
       draggedItem: {},
       buildingOutfit: [],
@@ -42,7 +42,6 @@ class App extends Component {
   }
 
   onDragStart = (item) => {
-    // console.log("dragging object", item);
     this.setState({ draggedItem: item })
   }
 
@@ -51,10 +50,6 @@ class App extends Component {
   }
 
   onDrop = () => {
-    // console.log("buildingOutfit", this.state.buildingOutfit);
-    // console.log("true or false?", !this.state.buildingOutfit.includes(this.state.draggedItem) && !this.state.currentOutfitItems.includes(this.state.draggedItem.id));
-    let _this = this
-    // debugger
     if (!this.state.buildingOutfit.includes(this.state.draggedItem) && !this.state.currentOutfitItems.includes(this.state.draggedItem.id)) {
       this.setState( prevState => {
         return { buildingOutfit: [...prevState.buildingOutfit, this.state.draggedItem] }
@@ -94,17 +89,49 @@ class App extends Component {
       })
       this.setState({ items })
     })
+
+    this.fetchOutfitItems()
+  }
+
+  deleteItem = (item) => {
+    console.log("gonna delete this item", item);
+
+    fetch(`http://localhost:3000/items/${item.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      }
+    })
+    this.rerenderItems(item)
+  }
+
+  /*********************************
+              FETCHES
+  *********************************/
+  fetchOutfitItems = () => {
+    fetch("http://localhost:3000/outfit_items")
+    .then( res => res.json())
+    .then( outfitItems => {
+      this.setState({ outfitItems })
+    })
   }
 
   /*********************************
               RENDERS
   *********************************/
+  rerenderItems = (item) => {
+    let toggle = !this.state.reset
+    let newItems = this.state.items.filter( i => i.id != item.id)
+    let newOutfitItems = this.state.outfitItems.filter( oi => oi.item_id != item.id)
+    this.setState({
+      items: newItems,
+      outfitItems: newOutfitItems
+    })
+  }
 
   render() {
-    // console.log("dragged item", this.state.draggedItem);
-    // console.log("items in App", this.state.items);
-    // console.log("current outfit items", this.state.currentOutfitItems);
-    console.log("building outfit", this.state.buildingOutfit, "currentOutfitItems", this.state.currentOutfitItems);
+    console.log("outfits", this.state.outfits);
 
     return (
 
@@ -124,10 +151,13 @@ class App extends Component {
               user={this.state.user}
               items={this.state.items}
               onDragStart={this.onDragStart}
+              rerenderItems={this.rerenderItems}
+              deleteItem={this.deleteItem}
             />
 
             <OutfitContainer
               user={this.state.user}
+              outfitItems={this.state.outfitItems}
               onDragOver={this.onDragOver}
               onDrop={this.onDrop}
               buildingOutfit={this.state.buildingOutfit}

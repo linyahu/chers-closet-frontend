@@ -102,7 +102,7 @@ class OutfitContainer extends React.Component {
             currentItems={this.state.currentItems}
             user={this.props.user}
             outfit={this.state.editCurrentOutfit}
-            outfits={this.state.outfits}
+            outfits={this.state.outfitits}
             buildingOutfit={this.props.buildingOutfit}
             onDragStart={this.cannotDragItem}
             removeItem={this.removeItem}
@@ -115,18 +115,21 @@ class OutfitContainer extends React.Component {
       return (
       <div>
         <button onClick={this.displayNewOutfitForm}> Create New Outfit </button>
-        {this.state.outfits.map(outfit => {
-          return (
-            <OutfitCard
-              key={outfit.id}
-              id={outfit.id}
-              outfit={outfit}
-              handleEditOutfit={this.handleEditOutfit}
-              onDragStart={this.cannotDragItem}
-              onMouseOver={this.noMouseOver}
-            />
-          )
-        })}
+        {
+          this.state.outfits.map(outfit => {
+            return (
+              <OutfitCard
+                key={outfit.id}
+                id={outfit.id}
+                outfit={outfit}
+                handleEditOutfit={this.handleEditOutfit}
+                onDragStart={this.cannotDragItem}
+                onMouseOver={this.noMouseOver}
+                outfitItems={this.props.outfitItems}
+              />
+            )
+          })
+        }
       </div>
       )
     }
@@ -134,10 +137,7 @@ class OutfitContainer extends React.Component {
 
 
   render(){
-    // console.log("current ouftis", this.state.outfits)
-    // console.log("deletedItems", this.state.deletedItems);
-    // console.log("what are the props in here again? outfit container", this.props);
-    console.log("all the items we have rihgt now", this.state.currentItems, this.props.buildingOutfit);
+    // console.log("are outfits here", this.state.outfits);
     return (
       <div>
         <h1> OUTFITS </h1>

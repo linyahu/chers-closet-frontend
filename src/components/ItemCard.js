@@ -3,13 +3,8 @@ import React, { Component, Fragment } from 'react'
 class ItemCard extends React.Component {
   state = {
     src: "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical.jpg",
-    edit: false,
   }
 
-  editItem = (item) => {
-    console.log("edit this item", item)
-    this.setState({ edit: true })
-  }
 
   componentDidMount() {
     fetch(`http://localhost:3000/items/${this.props.id}`)
@@ -20,46 +15,29 @@ class ItemCard extends React.Component {
     })
   }
 
-  renderEdit() {
-    if (this.state.edit) {
-      return (
-        <Fragment>
-          <span className="item-image">
-            <p> does this thing work </p>
-            <p> do i have access to props? </p>
-            <p> Description{this.props.item.description} </p>
-          </span>
-        </Fragment>
-      )
-    } else {
-      return (
-        <Fragment>
-          <button
-            className={this.props.button || "hidden-button"}
-            onClick={ () => this.props.removeItem(this.props.item) }
-            >X</button>
-          <img
-            className="item-image"
-            src={this.state.src}
-            alt="fun pic"
-          />
-          <button
-            className={this.props.button || "hidden-button"}
-            onClick={ () => this.editItem(this.props.item) }
-            >Edit</button>
-        </Fragment>
-      )
-    }
-  }
-
-
   render(){
     return(
       <div
         className="item-card"
         onDragStart={ () => this.props.onDragStart(this.props.item) }
       >
-      { this.renderEdit() }
+
+      <button
+        className={this.props.button || "hidden-button"}
+        onClick={ () => this.props.removeItem(this.props.item) }>
+        X
+      </button>
+      <img
+        className="item-image"
+        src={this.state.src}
+        alt="fun pic"
+      />
+      <button
+        className={this.props.delete || "hidden-button"}
+        onClick={ () => this.props.deleteItem(this.props.item) }>
+        Delete
+      </button>
+
       </div>
     )
   }
