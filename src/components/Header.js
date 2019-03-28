@@ -7,7 +7,7 @@ class Header extends React.Component {
       <div>
       <br/>
       <br/>
-      < img className="chers" src={process.env.PUBLIC_URL + '/chers.png'} />
+      < img className="chers" src={process.env.PUBLIC_URL + '/pinklogo.png'} />
       </div>
     )
   }

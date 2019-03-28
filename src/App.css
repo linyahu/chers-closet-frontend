@@ -54,7 +54,6 @@ h2 {
 }
 
 .new-outfit {
-  border-color: blue;
   border-style: solid;
   margin: 10px;
   padding: 10px;
@@ -90,8 +89,6 @@ h2 {
 
 .outfit-image{
   display: inline;
-  /* position: relative;
-  display: inline-table; */
   margin-bottom: -20px;
   height: 90px;
   width: 90px;
@@ -141,9 +138,9 @@ h2 {
 
 .delete-btn {
   visibility: hidden;
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
+  position: relative;
+  bottom: -7px;
+  left: auto;
 }
 
 .hidden-button {
@@ -154,7 +151,7 @@ h2 {
   transform: rotate(180deg);
   margin-bottom: -115px;
   /* margin-left: 10px; */
-  margin-right: 20px;
+  margin-right: 50px;
 }
 
 .left-arrow:hover {
@@ -173,9 +170,34 @@ box-shadow:         0px 0px 30px 0px rgba(229, 146, 171, 0.67);
 
 .right-arrow {
   margin-bottom: -115px;
-  /* margin-left: 20px; */
-  margin-right: 20px;
+  margin-left: 50px;
+  /* margin-right: 50px; */
 }
+
+
+.left-closet-arrow:hover {
+background-color:  rgba(229, 146, 171, 0.3);
+-webkit-box-shadow: 0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+-moz-box-shadow:    0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+box-shadow:         0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+}
+
+.left-closet-arrow {
+  transform: rotate(180deg);
+  margin-bottom: -223px;
+  margin-right: 1140px;
+}
+.right-closet-arrow {
+  margin-bottom: -223px;
+  margin-left: 1135px;
+}
+.right-closet-arrow:hover {
+background-color:  rgba(229, 146, 171, 0.3);
+-webkit-box-shadow: 0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+-moz-box-shadow:    0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+box-shadow:         0px 0px 30px 0px rgba(229, 146, 171, 0.67);
+}
+
 
 button {
   font-family: arial;
@@ -187,16 +209,17 @@ button {
   margin-bottom: 5px;
   color: black;
   background-color: rgb(255, 244, 247);
+  border-color: rgb(255, 244, 247)
 }
 
-button:hover {
+ button:hover {
   color: white;
   background-color: rgb(229, 146, 171);
 }
 
 .chers {
-  height: 200px;
-  width: 270px;
+  height: 100px;
+  width: 280px;
 }
 
 .closet {
@@ -208,13 +231,6 @@ button:hover {
     font-family: 'Crimson Text', serif;
     src: url("https://fonts.googleapis.com/css?family=Crimson+Text")
   }
-
-  /* img:hover{
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 5px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 5px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-} */
 
 .closet-box{
   border-color: rgb(242, 243, 244);
@@ -228,8 +244,41 @@ button:hover {
 }
 
 .add-item {
-  width: 900px;
+  width: 960px;
   margin-top:10px;
   padding: 5px;
   margin-bottom: -20px;
+  color: black;
+  background-color: rgb(227, 236, 242);
+  border-color: rgb(227, 236, 242);
+}
+
+.add-outfit{
+  width: 960px;
+  margin-top: 10px;
+  padding: 5px;
+  margin-bottom: -20px;
+  color: black;
+  background-color: rgb(227, 236, 242);
+  border-color: rgb(227, 236, 242);
+}
+
+.add-item:hover {
+  color: white;
+  background-color: rgb(147, 178, 198);
+  border-color: rgb(147, 178, 198);
+}
+
+.add-outfit:hover {
+  color: white;
+  background-color: rgb(147, 178, 198);
+  border-color: rgb(147, 178, 198);
+}
+
+.edit-button {
+  width: 280px;
+  padding: 5px;
+  margin-bottom: -20px;
+  margin-top: 20px;
+  border-color: rgb(255, 244, 247)
 }

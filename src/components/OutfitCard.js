@@ -24,6 +24,9 @@ class OutfitCard extends React.Component{
       <div className="outfitcard">
         Outfit: {this.props.outfit.description}
         <br/>
+        <button className="edit-button" onClick={() => this.props.handleEditOutfit(this.props.outfit, this.state.items)} >
+        Edit Outfit
+        </button>
         {
           this.state.items.map( item => {
             return (
@@ -39,13 +42,6 @@ class OutfitCard extends React.Component{
             )
           })
         }
-        <br/>
-        <br/>
-        <button onClick={() => this.props.handleEditOutfit(this.props.outfit, this.state.items)} >
-        Edit Outfit
-        </button>
-
-
       </div>
     )
   }
