@@ -90,12 +90,23 @@ class EditOutfit extends Component {
    this.fetchOutfits()
  }
 
+ deleteOutfit = () => {
+   fetch(`http://localhost:3000/outfits/${this.props.outfit.id}`, {
+     method: "DELETE",
+     headers: {
+       "Content-Type": "application/json",
+       "Accepts": "application/json"
+     }
+   })
+   let outfits = this.props.outfits.filter( o => o.id !== this.props.outfit.id)
+   this.props.hideEditForm(outfits)
+ }
+
  fetchOutfits = () => {
    fetch("http://localhost:3000/outfits")
    .then( res => res.json())
    .then( json => {
      let outfits = json.filter( outfit => outfit.user_id === this.props.user)
-     // this.setState({ outfits })
      this.props.hideEditForm(outfits)
    })
  }
@@ -200,6 +211,7 @@ renderNewItems = () => {
         </form>
 
         <button onClick={this.editOutfit}> Save outfit </button>
+        <button onClick={this.deleteOutfit}> Delete outfit </button>
 
       </div>
     )

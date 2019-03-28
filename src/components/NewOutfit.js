@@ -55,7 +55,7 @@ class NewOutfit extends Component {
         outfit_id: id,
         item_id: item.id
       }
-      console.log(data);
+      // console.log(data);
       fetch("http://localhost:3000/outfit_items", {
         method: "POST",
         headers: {

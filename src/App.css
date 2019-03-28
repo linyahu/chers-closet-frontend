@@ -78,6 +78,9 @@ h2 {
 }
 
 .in-outfit {
+   width: 150px;
+   padding: 15px 15px 15px 15px;
+   margin: 20px 20px 20px 20px;
    overflow: visible;
    position: relative;
    display: inline-grid;
@@ -133,6 +136,17 @@ h2 {
   position: absolute;
   top: 2px;
   right: 2px;
+}
+
+.in-closet:hover button.delete-btn {
+  visibility: visible;
+}
+
+.delete-btn {
+  visibility: hidden;
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
 }
 
 .hidden-button {

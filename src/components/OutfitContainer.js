@@ -39,6 +39,7 @@ class OutfitContainer extends React.Component {
 
 
   hideEditForm = (o) => {
+    console.log("what are outfits now?", o);
     this.setState({
       displayEditOutfitForm: false,
       outfits: o
@@ -101,6 +102,7 @@ class OutfitContainer extends React.Component {
             currentItems={this.state.currentItems}
             user={this.props.user}
             outfit={this.state.editCurrentOutfit}
+            outfits={this.state.outfits}
             buildingOutfit={this.props.buildingOutfit}
             onDragStart={this.cannotDragItem}
             removeItem={this.removeItem}

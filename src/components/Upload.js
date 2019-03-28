@@ -37,6 +37,7 @@ class Upload extends Component {
       })
       .then(json => {
         this.setState({ imageURL: json.url });
+        window.location.reload()
       });
   };
 
