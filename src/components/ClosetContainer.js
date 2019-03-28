@@ -1,6 +1,6 @@
 import React from 'react'
 import ItemCard from './ItemCard'
-import arrow from './arrow.png'
+// import arrow from './arrow.png'
 
 class ClosetContainer extends React.Component {
   state = {
@@ -8,7 +8,7 @@ class ClosetContainer extends React.Component {
   }
 
   onMouseOver() {
-    console.log("will show some buttons appear?");
+    // console.log("will show some buttons appear?");
   }
 
   displayNextItems = () => {
@@ -65,7 +65,13 @@ class ClosetContainer extends React.Component {
         <button className="add-item" onClick={() => this.props.renderUploadForm()}> Add Item To Closet </button>
         <br/>
 
-        < img className="left-arrow" src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png" width="105px" onClick={this.displayPreviousItems}/>
+        <img
+          className="left-arrow"
+          src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png"
+          width="105px"
+          onClick={this.displayPreviousItems}
+          alt="left arrow"
+        />
 
         {
           this.props.items.slice(this.state.displayStart, this.state.displayStart + 4).map( item => {
@@ -84,7 +90,14 @@ class ClosetContainer extends React.Component {
           })
         }
 
-        < img className="right-arrow" src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png" width="105px" onClick={this.displayNextItems}/>
+        <img
+          className="right-arrow"
+          src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png"
+          width="105px"
+          onClick={this.displayNextItems}
+          alt="right arrow"
+        />
+
         <br/>
         <br/>
         </div>

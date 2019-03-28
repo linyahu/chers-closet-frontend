@@ -112,11 +112,11 @@ class OutfitContainer extends React.Component {
   }
 
   cannotDragItem() {
-    console.log("can't drag this!");
+    // console.log("can't drag this!");
   }
 
   noMouseOver() {
-    console.log("no mouse over");
+    // console.log("no mouse over");
   }
 
   /*********************************
@@ -165,9 +165,22 @@ class OutfitContainer extends React.Component {
         <button className="add-outfit" onClick={this.displayNewOutfitForm}> Create New Outfit </button>
         <br/>
 
-      <img className="left-closet-arrow" src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png" width="105px" onClick={this.displayPreviousItems}/>
+      <img
+        className="left-closet-arrow"
+        src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png"
+        width="105px"
+        onClick={this.displayPreviousItems}
+        alt="left arrow"
+        />
         <br/>
-      <img className="right-closet-arrow" src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png" width="105px" onClick={this.displayNextItems}/>
+
+      <img
+        className="right-closet-arrow"
+        src="https://requestreduce.org/images/arrow-clipart-black-and-white-4.png"
+        width="105px"
+        onClick={this.displayNextItems}
+        alt="right arrow"
+      />
 
         <div className="outfits">
         {
@@ -192,7 +205,6 @@ class OutfitContainer extends React.Component {
 
 
   render(){
-    console.log("current outfits", this.state.outfits)
     return (
       <div>
         {this.renderBottomComponent()}

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
-class ItemCard extends React.Component {
+class ItemCard extends Component {
   state = {
     src: "https://aimint.org/ap/wp-content/uploads/sites/18/2016/04/image-placeholder-vertical.jpg",
     edit: false,

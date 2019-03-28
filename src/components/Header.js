@@ -5,9 +5,19 @@ class Header extends React.Component {
   render(){
     return (
       <div>
-      <br/>
-      <br/>
-      < img className="chers" src={process.env.PUBLIC_URL + '/pinklogo.png'} />
+        {
+          this.props.user !== null ?
+          <button onClick={this.props.handleLogout}>Logout</button>
+          :
+          null
+        }
+        <div>
+          <img
+            className="chers"
+            src={process.env.PUBLIC_URL + '/pinklogo.png'}
+            alt="cher's closet logo"
+            />
+        </div>
       </div>
     )
   }
@@ -16,6 +26,3 @@ class Header extends React.Component {
 };
 
 export default Header
-
-
-// <button onClick={() => this.props.renderUploadForm()}> Add Item To Closet </button>

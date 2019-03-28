@@ -64,7 +64,7 @@ class Upload extends Component {
   };
 
   handleFileUpload = event => {
-    console.log(event.nativeEvent, event.target.files, event.target.files[0]);
+    // console.log(event.nativeEvent, event.target.files, event.target.files[0]);
     this.setState({
       image: event.target.files[0],
     });
