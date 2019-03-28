@@ -22,7 +22,7 @@ class OutfitCard extends React.Component{
 
     return(
       <div className="outfitcard">
-        Outfit: {this.props.outfit.description}
+        outfit: {this.props.outfit.description}
         <br/>
         <button className="edit-button" onClick={() => this.props.handleEditOutfit(this.props.outfit, this.state.items)} >
         Edit Outfit

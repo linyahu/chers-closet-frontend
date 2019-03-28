@@ -47,17 +47,17 @@ class ClosetContainer extends React.Component {
       <div className="closet-box">
         <h2> my closet </h2>
 
-        <div className="filter">
-        <label>Filter by category </label>
-        <select onChange={this.props.filterItems} name="category" value={this.props.category}>
-          <option value="">All</option>
-          <option value="tops">Tops</option>
-          <option value="bottoms">Bottoms</option>
-          <option value="outerwear">Outerwear</option>
-          <option value="dresses">Dresses</option>
-          <option value="shoes">Shoes</option>
-          <option value="accessories">Accessories</option>
-          <option value="handbag">Handbag</option>
+        <div className="custom-select" >
+        <label>filter by category </label>
+        <select className="filter" onChange={this.props.filterItems} name="category" value={this.props.category}>
+          <option className="test" value="">All</option>
+          <option className="test" value="tops">Tops</option>
+          <option className="test" value="bottoms">Bottoms</option>
+          <option className="test" value="outerwear">Outerwear</option>
+          <option className="test" value="dresses">Dresses</option>
+          <option className="test" value="shoes">Shoes</option>
+          <option className="test" value="accessories">Accessories</option>
+          <option className="test" value="handbag">Handbag</option>
         </select>
         </div>
 

@@ -61,11 +61,15 @@ class Upload extends Component {
 
         <form onSubmit={this.handleSubmit}>
           <label> Description: </label>
-          <input name="description" type="text" value={this.state.description} onChange={this.handleChange} />
+          <input className="description" name="description" type="text" value={this.state.description} onChange={this.handleChange} />
+          <br />
+
+          <label> Brand: </label>
+          <input className="brand" name="brand" type="text" value={this.state.brand} onChange={this.handleChange} />
           <br />
 
           <label> Category: </label>
-          <select onChange={this.handleChange} name="category" value={this.state.category}>
+          <select className="category" onChange={this.handleChange} name="category" value={this.state.category}>
             <option value="">Select</option>
             <option value="tops">Tops</option>
             <option value="bottoms">Bottoms</option>
@@ -79,7 +83,7 @@ class Upload extends Component {
           <br />
 
           <label> Color: </label>
-          <select onChange={this.handleChange} name="color" value={this.state.color}>
+          <select className="color" onChange={this.handleChange} name="color" value={this.state.color}>
           <option value="">Select</option>
           <option value="black">Black</option>
           <option value="white">White</option>
@@ -98,14 +102,8 @@ class Upload extends Component {
 
           <br />
 
-
-          <label> Brand: </label>
-          <input name="brand" type="text" value={this.state.brand} onChange={this.handleChange} />
-
-          <br />
-
-          <input type="file" onChange={this.handleFileUpload} />
-          <input type="submit" value="Upload" />
+          <input className="file" type="file" onChange={this.handleFileUpload} />
+          <input className="submit" type="submit" value="Upload" />
         </form>
 
         {!!this.state.imageURL ? (

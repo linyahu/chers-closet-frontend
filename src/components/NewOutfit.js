@@ -90,7 +90,7 @@ class NewOutfit extends Component {
     console.log("new outfit state", this.state);
     return (
       <div className="new-outfit">
-        <h1> This will be a new outfit form </h1>
+        <h2> style a new outfit </h2>
         <div
           onDragOver={this.props.onDragOver}
           onDrop={this.props.onDrop}
@@ -99,7 +99,7 @@ class NewOutfit extends Component {
           {
             this.props.currentItems == ""
             ?
-            <h2> drag items from closet here </h2>
+            <h3> d r a g  - i t e m s - f r o m - c l o s e t - h e r e </h3>
             :
             this.props.currentItems.map( item => {
               return (
@@ -118,7 +118,6 @@ class NewOutfit extends Component {
             })
           }
         </div>
-
         <form>
 
           <label> Description: </label>
@@ -127,7 +126,7 @@ class NewOutfit extends Component {
           <br />
 
           <label> Category: </label>
-          <select onChange={this.handleChange} name="category" value={this.state.category}>
+          <select className="cat" onChange={this.handleChange} name="category" value={this.state.category}>
             <option value="">Select</option>
             <option value="casual">Casual</option>
             <option value="work">Work</option>
@@ -139,7 +138,7 @@ class NewOutfit extends Component {
           <br />
 
           <label> Season: </label>
-          <select onChange={this.handleChange} name="season" value={this.state.season} >
+          <select className="sn" onChange={this.handleChange} name="season" value={this.state.season} >
             <option value="">Select</option>
             <option value="winter">Winter</option>
             <option value="spring">Spring</option>
@@ -149,7 +148,7 @@ class NewOutfit extends Component {
 
         </form>
 
-        <button onClick={this.createOutfit}> Save outfit </button>
+        <button className="save" onClick={this.createOutfit}> Save outfit </button>
 
       </div>
     )

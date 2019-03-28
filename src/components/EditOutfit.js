@@ -161,7 +161,7 @@ renderNewItems = () => {
     console.log("props", this.props);
     return (
       <div className="new-outfit">
-        <h1> This will be a edit outfit form </h1>
+        <h2> edit your outfit below </h2>
         <div
           className="drag-and-drop"
           onDragOver={this.props.onDragOver}
@@ -188,7 +188,7 @@ renderNewItems = () => {
           <br />
 
           <label> Category: </label>
-          <select onChange={this.handleChange} name="category" value={this.state.category}>
+          <select onChange={this.handleChange} className="cat" name="category" value={this.state.category}>
             <option value="">Select</option>
             <option value="casual">Casual</option>
             <option value="work">Work</option>
@@ -200,7 +200,7 @@ renderNewItems = () => {
           <br />
 
           <label> Season: </label>
-          <select onChange={this.handleChange} name="season" value={this.state.season} >
+          <select onChange={this.handleChange} className="sn" name="season" value={this.state.season} >
             <option value="">Select</option>
             <option value="winter">Winter</option>
             <option value="spring">Spring</option>
@@ -210,7 +210,7 @@ renderNewItems = () => {
 
         </form>
 
-        <button onClick={this.editOutfit}> Save outfit </button>
+        <button className="save" onClick={this.editOutfit}> Save outfit </button>
         <button onClick={this.deleteOutfit}> Delete outfit </button>
 
       </div>
