@@ -5,7 +5,7 @@ Inspired by Cher's Closet from the 1995 movie Clueless
 alt="CLUELESS" width="240" height="180" border="10" /></a>
 
 This program was created as a final React project
-at FlatIron School by Linya Hu, MariaChristina Simoes & Emily Seieroe
+at FlatIron School by Linya Hu, Maria Cristina Simoes & Emily Seieroe
 in March 2019
 
 This program is written in React JavaScript for the front end and it includes a Ruby on Rails backend that allows information from the program to be stored in a database.
