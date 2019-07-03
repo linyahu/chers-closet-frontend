@@ -8,4 +8,6 @@ Cher's Closet is an outfit planning app that was inspired by the 1995 movie Clue
 alt="CLUELESS" width="350" height="250" border="10" /></a>
 
 
-In Cher's Closet users can upload clothing items to their closet, create new outfits out of many clothing items and then edit or delete items and outfits.  There is also a filter function to filter items in your closet by category. This allows users to find items quickly, instead of clicking endlessly through the carousel. 
+In Cher's Closet users can upload clothing items to their closet, create new outfits out of many clothing items and then edit or delete items and outfits.  There is also a filter function to filter items in your closet by category. This allows users to find items quickly, instead of clicking endlessly through the carousel.
+
+You can view the backend code of the app [here](https://github.com/lh62594/chers-closet-rails-backend).
